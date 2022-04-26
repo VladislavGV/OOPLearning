@@ -1,6 +1,25 @@
 package constructorTest;
 
 public class Main {
+
+    public static void main(String[] args) {
+        Fraction fr = new Fraction(1, 2);
+        fr.add1ToNumerator().add1ToNumerator().add1ToNumerator().add1ToNumerator().add1ToNumerator();
+
+        Person oleg = new Person("Konin", "Oleg",'m');
+        System.out.println(oleg);
+
+        Employee olga = new Employee("Svetova", "Olga", 'f', "Buhgalter");
+
+        System.out.println(olga);
+
+        Person olga2 = olga;
+        // Employee oleg2 = oleg;
+
+        System.out.println(olga2);
+    }
+
+
 //    public static void main(String[] args) throws Exception {
 //        Person person = new Person("Sergey", 28, "Proletarskaya 10", "88005553535");
 //        Person.getCounter();
@@ -36,7 +55,7 @@ public class Main {
 
 //        this.address = address;
 //        this.phone = phone;
-    }
+}
 
 //    public void displayName(){
 //        System.out.printf("Name %s \n, name");
@@ -91,6 +110,90 @@ class Fraction {
         return this;
     }
 
+    public Fraction getObjectCurrent() {
+        return this;
+    }
+
 }
+
+class Person {
+    protected String firstName;
+    protected String lastName;
+    protected char gender; // m - male, f - female
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public Person() {
+        this("", "", '-');
+    }
+
+    public Person(String lastName) {
+        this(lastName, "", '-');
+    }
+
+    public Person(String lastName, String firstName, char gender) {
+        this(lastName, firstName);
+        this.gender = gender;
+    }
+
+    public Person(String lastName, String firstName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender=" + gender +
+                '}';
+    }
+}
+    class Employee extends Person{
+     protected String dolznost;
+
+        public Employee(String lastName, String firstName, char gender, String dolznost) {
+            super(lastName, firstName, gender);
+            this.dolznost = dolznost;
+        }
+
+        @Override
+        public String toString() {
+            return "Employee{" +
+                    "dolznost='" + dolznost + '\'' +
+                    ", firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", gender=" + gender +
+                    '}';
+        }
+
+        public void tellMeWhoAreYou() {
+            System.out.println("Hello, I am employee and my class is " + this.getClass());
+        }
+
+    }
 
 
