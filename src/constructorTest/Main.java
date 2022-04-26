@@ -12,8 +12,10 @@ public class Main {
         Employee olga = new Employee("Svetova", "Olga", 'f', "Buhgalter");
 
         System.out.println(olga);
+        olga.tellMeWhoAreYou();
 
         Person olga2 = olga;
+        ((Employee)olga2).tellMeWhoAreYou();
         // Employee oleg2 = oleg;
 
         System.out.println(olga2);
